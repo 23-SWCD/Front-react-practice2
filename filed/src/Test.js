@@ -27,7 +27,7 @@ function Test() {
             width: "100%",
             marginLeft: "1rem",
           }}
-          >
+          > 
             내용:{content}
             <hr/>
           </div>)

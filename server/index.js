@@ -11,6 +11,7 @@ app.use(express.static(path.join(__dirname, "../filed/build")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const { Post } = require("./Model/Post.js");
 app.listen(port, () => {
   mongoose
     .connect(
@@ -31,7 +32,18 @@ app.get("/", (요청, 응답) => {
 app.get("*", (요청, 응답) => {
   응답.sendFile(path.join(__dirname, "../filed/build/index.html"));
 });
-app.post("/api/test", (요청, 응답) => {
-  console.log(요청.body);
-  응답.status(200).json({ success: true, text: "안녕하세요" });
+app.post("/api/post/submit", (req, res) => {
+  let temp = req.body;
+  const CommunityPost = new Post({ temp });
+  CommunityPost.save()
+    .then(() => {
+      res.status(200).json({ success: true });
+    })
+    .catch((err) => {
+      res.status(400).json({ success: false });
+    });
 });
+/* 
+1.post MongoDB Model
+2. Client CSS (Bootstrap, Emotion)
+*/

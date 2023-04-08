@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import List from './componentss/List';
-import Heading from './componentss/Heading';
-import Upload from './componentss/Upload';
+import Heading from "./componentss/Heading";
+import List from "./componentss/Post/List";
+import Upload from "./componentss/Post/Upload";
 
 function App() {
   const [ContentList, setContentList] = useState([]);
@@ -11,19 +11,18 @@ function App() {
     <>
       <Heading />
       <Routes>
-        <Route path="/list" 
+        <Route
+          path="/"
           element={
             <List ContentList={ContentList} setContentList={setContentList} />
           }
         />
-        <Route 
-        path="/Upload" 
-        element={
+        <Route
+          path="/Upload"
+          element={
             <Upload ContentList={ContentList} setContentList={setContentList} />
-          } 
+          }
         />
-
-
       </Routes>
     </>
   );
