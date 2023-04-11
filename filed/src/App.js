@@ -1,28 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Heading from "./componentss/Heading";
 import List from "./componentss/Post/List";
 import Upload from "./componentss/Post/Upload";
+import Detail from "./componentss/Post/Detail";
 
 function App() {
-  const [ContentList, setContentList] = useState([]);
-
   return (
     <>
       <Heading />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <List ContentList={ContentList} setContentList={setContentList} />
-          }
-        />
-        <Route
-          path="/Upload"
-          element={
-            <Upload ContentList={ContentList} setContentList={setContentList} />
-          }
-        />
+        <Route path="/" element={<List />} />
+        <Route path="/Upload" element={<Upload />} />
+        <Route path="/Post/:postNum" element={<Detail />} />
       </Routes>
     </>
   );
