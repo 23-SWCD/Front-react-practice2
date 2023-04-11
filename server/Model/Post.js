@@ -1,9 +1,12 @@
 const mongoose = require("mongoose");
 
-const postSchema = new mongoose.Schema({
-  title: String,
-  content: String,
-});
+const postSchema = new mongoose.Schema(
+  {
+    title: String,
+    content: String,
+  },
+  { collaction: "posts" }
+);
 
 const Post = mongoose.model("Post", postSchema);
 
